@@ -113,6 +113,9 @@ Bu ekranların taslak tasarımları **Figma** üzerinden hazırlanacaktır.
 **Video İçeriği:**
 Proje fikri ve planı anlatılacaktır.
 
+**Yayınlanan Video:**  
+https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s
+
 ---
 
 ### 2. Hafta
@@ -124,6 +127,9 @@ Proje fikri ve planı anlatılacaktır.
 
 **Video İçeriği:**
 Kurulum süreci ve proje başlangıcı anlatılacaktır.
+
+**Yayınlanan Video:**  
+https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1
 
 ---
 
@@ -258,7 +264,8 @@ Her hafta yapılan gelişmeler **3-5 dakikalık** video ile anlatılacaktır.
 
 Videolar **YouTube** üzerinden bir oynatma listesinde paylaşılacaktır.
 
-**YouTube Playlist:** [Playlist](https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H)
+YouTube Playlist:  
+https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H
 
 ---
 

@@ -45,8 +45,8 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 
 | Hafta | Konu | Durum | Video |
 |-------|------|-------|-------|
-| 1 | Proje planlama ve dokümantasyon | Tamamlandı | [Video Linki](#) |
-| 2 | React Native kurulumu ve proje yapısı | Beklemede | - |
+| 1 | Proje planlama ve dokümantasyon | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s) |
+| 2 | React Native kurulumu ve proje yapısı | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1) |
 | 3 | Login/Register ekranları | Beklemede | - |
 | 4 | Backend API geliştirme | Beklemede | - |
 | 5 | Besin ekleme sistemi | Beklemede | - |
@@ -60,14 +60,21 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 
 ## Haftalık Videolar
 
-YouTube Playlist: [Eklenecek](https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H)
+YouTube Playlist: [Buradan](https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H)
 
 ### Hafta 1 - Proje Tanıtımı
 - Proje fikri ve hedefler
 - Teknoloji seçimleri
 - Geliştirme planı
 
-**Video:** [Eklenecek]
+**Video:** [https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s](https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s)
+
+### Hafta 2 - Expo Kurulumu ve Proje Başlangıcı
+- React Native/Expo ortamının kurulumu
+- TypeScript şablonu ile mobil projenin oluşturulması
+- Web üzerinde çalışan basit başlangıç ekranının gösterimi
+
+**Video:** [https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1](https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1)
 
 ---
 
@@ -144,11 +151,11 @@ npm run dev
 - [x] Proje dokümantasyonu hazırlandı
 - [x] README.md oluşturuldu
 
-### Hafta 2 (Planlanan)
-- [ ] React Native ortamı kurulacak
-- [ ] Expo projesi oluşturulacak
-- [ ] Temel klasör yapısı hazırlanacak
-- [ ] İlk commit atılacak
+### Hafta 2 (Tamamlandı)
+- [x] React Native ortamı kuruldu
+- [x] Expo TypeScript projesi oluşturuldu
+- [x] Temel klasör ve bağımlılıklar hazırlandı
+- [x] Web üzerinde çalışan başlangıç ekranı gösterildi
 
 ---
 
