@@ -143,6 +143,9 @@ https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0
 **Video İçeriği:**
 Login ve Register ekranlarının çalışması gösterilecektir.
 
+**Yayınlanan Video:**  
+https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s
+
 ---
 
 ### 4. Hafta

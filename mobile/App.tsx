@@ -1,32 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import AuthNavigator from './src/navigation/AuthNavigator';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.courseCode}>BLM4538</Text>
-        <Text style={styles.courseTitle}>iOS ile Mobil Uygulama Geliştirme II</Text>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.appTitle}>Fitness Macro Tracking Application</Text>
-        <Text style={styles.appSubtitle}>Hafta 2 - Proje Başlangıcı ve Kurulum</Text>
-      </View>
-
-      <View style={styles.infoBox}>
-        <Text style={styles.infoText}>Öğrenci: Doğukan Filiz</Text>
-        <Text style={styles.infoText}>Öğrenci No: 22290746</Text>
-        <Text style={styles.infoText}>Tarih: Mart 2026</Text>
-      </View>
-
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>Bu hafta: Expo projesi oluşturuldu, temel yapı hazırlandı.</Text>
-      </View>
-
-      <StatusBar style="light" />
-    </View>
-  );
+  return <AuthNavigator />;
 }
 
 const styles = StyleSheet.create({

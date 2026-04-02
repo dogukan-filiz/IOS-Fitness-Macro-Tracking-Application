@@ -47,7 +47,7 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 |-------|------|-------|-------|
 | 1 | Proje planlama ve dokümantasyon | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s) |
 | 2 | React Native kurulumu ve proje yapısı | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1) |
-| 3 | Login/Register ekranları | Beklemede | - |
+| 3 | Login/Register ekranları | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s) |
 | 4 | Backend API geliştirme | Beklemede | - |
 | 5 | Besin ekleme sistemi | Beklemede | - |
 | 6 | Makro hesaplama sistemi | Beklemede | - |
@@ -75,6 +75,13 @@ YouTube Playlist: [Buradan](https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzB
 - Web üzerinde çalışan basit başlangıç ekranının gösterimi
 
 **Video:** [https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1](https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1)
+
+### Hafta 3 - Login ve Register Ekranları
+- React Navigation ile navigation yapısının kurulması
+- Login ve Register ekran tasarımlarının oluşturulması
+- Ekranlar arası geçiş akışının gösterimi
+
+**Video:** [https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s)
 
 ---
 
@@ -156,6 +163,12 @@ npm run dev
 - [x] Expo TypeScript projesi oluşturuldu
 - [x] Temel klasör ve bağımlılıklar hazırlandı
 - [x] Web üzerinde çalışan başlangıç ekranı gösterildi
+
+### Hafta 3 (Tamamlandı)
+- [x] React Navigation kuruldu
+- [x] Login ekranı oluşturuldu
+- [x] Register ekranı oluşturuldu
+- [x] Login/Register navigation akışı çalışır hale getirildi
 
 ---
 
