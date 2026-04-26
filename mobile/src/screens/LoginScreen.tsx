@@ -12,6 +12,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [debugLogin, setDebugLogin] = useState<string | null>(null);
 
   return (
     <View style={styles.container}>
@@ -57,11 +58,17 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               if (!res.ok) {
                 setError(data.error || 'Giriş başarısız');
               } else {
+                // show debug info about token
+                setDebugLogin(JSON.stringify(data));
                 // token sakla
                 try {
                   await AsyncStorage.setItem('token', data.token);
+                  const read = await AsyncStorage.getItem('token');
+                  console.log('Stored token read back:', read);
+                  setDebugLogin(prev => (prev ? prev + '\nStored:' + read : 'Stored:' + read));
                 } catch (e) {
                   console.warn('Token kaydedilemedi', e);
+                  setDebugLogin(prev => (prev ? prev + '\nSaveError' : 'SaveError'));
                 }
                 navigation.navigate('Home');
               }
