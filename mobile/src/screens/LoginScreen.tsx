@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useState } from 'react';
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { AuthStackParamList } from '../navigation/AuthNavigator';
 import { API_BASE } from '../config/api';
 
@@ -56,7 +57,12 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               if (!res.ok) {
                 setError(data.error || 'Giriş başarısız');
               } else {
-                // gerçek uygulamada token saklanır
+                // token sakla
+                try {
+                  await AsyncStorage.setItem('token', data.token);
+                } catch (e) {
+                  console.warn('Token kaydedilemedi', e);
+                }
                 navigation.navigate('Home');
               }
             } catch (e) {

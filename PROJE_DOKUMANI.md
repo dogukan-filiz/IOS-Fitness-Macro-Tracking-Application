@@ -146,6 +146,8 @@ Login ve Register ekranlarının çalışması gösterilecektir.
 **Yayınlanan Video:**  
 https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s
 
+**Durum:** Tamamlandı (26 Nisan 2026)
+
 ---
 
 ### 4. Hafta
@@ -250,6 +252,13 @@ main
 ├── mobile/        # React Native mobil uygulama
 ├── backend/       # Node.js/Express backend
 └── database/      # Veritabanı şemaları
+
+**Durum:** Tamamlandı (26 Nisan 2026)
+
+**Özet:**
+- Basit Express + SQLite backend eklendi (`/backend`)
+- `POST /api/register`, `POST /api/login` ve korumalı `GET /api/me` endpoint'leri eklendi
+- Mobilde token saklama ve profil çekme eklendi (AsyncStorage kullanıldı)
 ```
 
 ---

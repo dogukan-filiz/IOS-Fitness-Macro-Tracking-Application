@@ -1,10 +1,45 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
+import { API_BASE } from '../config/api';
 
 export default function HomeScreen() {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<{ id?: number; name?: string; email?: string } | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const token = await AsyncStorage.getItem('token');
+        if (!token) return setLoading(false);
+        const res = await fetch(`${API_BASE}/api/me`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (!res.ok) return setLoading(false);
+        const data = await res.json();
+        setUser(data.user || null);
+      } catch (e) {
+        console.warn('Profile fetch error', e);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Ana Panel</Text>
-      <Text style={styles.subtitle}>Bu ekran giriş sonrası gösterilecek placeholder.</Text>
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <>
+          <Text style={styles.title}>Ana Panel</Text>
+          {user ? (
+            <Text style={styles.subtitle}>Hoşgeldin, {user.name} ({user.email})</Text>
+          ) : (
+            <Text style={styles.subtitle}>Giriş yapılmadı.</Text>
+          )}
+        </>
+      )}
     </View>
   );
 }
