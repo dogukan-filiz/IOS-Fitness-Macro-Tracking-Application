@@ -153,7 +153,6 @@ https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0
 ### 4. Hafta
 **Görevler:**
 - Backend projesinin oluşturulması
-- PostgreSQL veritabanı kurulumu
 - Kullanıcı kayıt API'sinin yazılması
 - Kullanıcı giriş API'sinin yazılması
 - Mobil uygulama ile backend bağlantısı
