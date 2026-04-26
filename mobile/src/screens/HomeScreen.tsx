@@ -6,6 +6,8 @@ import { API_BASE } from '../config/api';
 export default function HomeScreen() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<{ id?: number; name?: string; email?: string } | null>(null);
+  const [debugToken, setDebugToken] = useState<string | null>(null);
+  const [debugResp, setDebugResp] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -38,6 +40,9 @@ export default function HomeScreen() {
           ) : (
             <Text style={styles.subtitle}>Giriş yapılmadı.</Text>
           )}
+          {/* Debug info */}
+          <Text style={{ marginTop: 12, color: '#9ca3af', fontSize: 12 }}>Debug token: {debugToken ?? 'null'}</Text>
+          <Text style={{ marginTop: 6, color: '#9ca3af', fontSize: 12 }}>GET /api/me response: {debugResp ?? 'none'}</Text>
         </>
       )}
     </View>
