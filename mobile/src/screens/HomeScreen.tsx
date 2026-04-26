@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import { useEffect, useState } from 'react';
 import { API_BASE } from '../config/api';
 
@@ -10,9 +10,9 @@ export default function HomeScreen() {
   const [debugResp, setDebugResp] = useState<string | null>(null);
 
   useEffect(() => {
-    (async () => {
+        (async () => {
       try {
-        const token = await AsyncStorage.getItem('token');
+        const token = await SecureStore.getItemAsync('token');
         if (!token) return setLoading(false);
         const res = await fetch(`${API_BASE}/api/me`, {
           headers: { Authorization: `Bearer ${token}` },

@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useState } from 'react';
 import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as SecureStore from 'expo-secure-store';
 import type { AuthStackParamList } from '../navigation/AuthNavigator';
 import { API_BASE } from '../config/api';
 
@@ -60,10 +60,10 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               } else {
                 // show debug info about token
                 setDebugLogin(JSON.stringify(data));
-                // token sakla
+                // token sakla using SecureStore
                 try {
-                  await AsyncStorage.setItem('token', data.token);
-                  const read = await AsyncStorage.getItem('token');
+                  await SecureStore.setItemAsync('token', data.token);
+                  const read = await SecureStore.getItemAsync('token');
                   console.log('Stored token read back:', read);
                   setDebugLogin(prev => (prev ? prev + '\nStored:' + read : 'Stored:' + read));
                 } catch (e) {
