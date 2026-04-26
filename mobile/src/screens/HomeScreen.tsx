@@ -12,7 +12,8 @@ export default function HomeScreen() {
   useEffect(() => {
         (async () => {
       try {
-        const token = await SecureStore.getItemAsync('token');
+        const { getToken } = await import('../utils/storage');
+        const token = await getToken();
         if (!token) return setLoading(false);
         const res = await fetch(`${API_BASE}/api/me`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -20,6 +21,8 @@ export default function HomeScreen() {
         if (!res.ok) return setLoading(false);
         const data = await res.json();
         setUser(data.user || null);
+        setDebugToken(token);
+        setDebugResp(JSON.stringify(data));
       } catch (e) {
         console.warn('Profile fetch error', e);
       } finally {
