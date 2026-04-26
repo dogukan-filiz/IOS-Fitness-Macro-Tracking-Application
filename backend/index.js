@@ -46,11 +46,15 @@ app.post('/api/login', (req, res) => {
 // Auth middleware
 function authenticate(req, res, next) {
   const authHeader = req.headers.authorization;
+  console.log('AUTH HEADER:', authHeader);
   if (!authHeader) return res.status(401).json({ error: 'Unauthorized' });
   const token = authHeader.split(' ')[1];
   if (!token) return res.status(401).json({ error: 'Unauthorized' });
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(401).json({ error: 'Invalid token' });
+    if (err) {
+      console.log('JWT verify error', err);
+      return res.status(401).json({ error: 'Invalid token' });
+    }
     req.user = decoded;
     next();
   });
