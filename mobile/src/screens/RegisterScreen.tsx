@@ -1,7 +1,8 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import type { AuthStackParamList } from '../navigation/AuthNavigator';
+import { API_BASE } from '../config/api';
 
 export type RegisterScreenProps = NativeStackScreenProps<AuthStackParamList, 'Register'>;
 
@@ -9,6 +10,9 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   return (
     <View style={styles.container}>
@@ -48,10 +52,38 @@ export default function RegisterScreen({ navigation }: RegisterScreenProps) {
           onChangeText={setPassword}
         />
 
-        <TouchableOpacity style={styles.primaryButton} onPress={() => {}}>
-          <Text style={styles.primaryButtonText}>Kayıt Ol</Text>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={async () => {
+            setError(null);
+            setSuccess(null);
+            setLoading(true);
+            try {
+              const res = await fetch(`${API_BASE}/api/register`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password }),
+              });
+              const data = await res.json();
+              if (!res.ok) {
+                setError(data.error || 'Kayıt başarısız');
+              } else {
+                setSuccess('Kayıt başarılı — giriş yapılıyor...');
+                // kısa bir bekleme sonrası Login ekranına yönlendir
+                setTimeout(() => navigation.navigate('Login'), 1000);
+              }
+            } catch (e) {
+              setError('Sunucu ile bağlantı kurulamadı');
+            } finally {
+              setLoading(false);
+            }
+          }}
+        >
+          {loading ? <ActivityIndicator color="#022c22" /> : <Text style={styles.primaryButtonText}>Kayıt Ol</Text>}
         </TouchableOpacity>
 
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
+        {success ? <Text style={styles.successText}>{success}</Text> : null}
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
           <Text style={styles.linkText}>Zaten hesabın var mı? Giriş yap</Text>
         </TouchableOpacity>
@@ -117,5 +149,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#38bdf8',
     fontSize: 14,
+  },
+  errorText: {
+    marginTop: 12,
+    color: '#f87171',
+    textAlign: 'center',
+  },
+  successText: {
+    marginTop: 12,
+    color: '#86efac',
+    textAlign: 'center',
   },
 });

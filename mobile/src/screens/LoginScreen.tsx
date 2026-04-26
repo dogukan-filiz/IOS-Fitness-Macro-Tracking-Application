@@ -1,13 +1,16 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useState } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import type { AuthStackParamList } from '../navigation/AuthNavigator';
+import { API_BASE } from '../config/api';
 
 export type LoginScreenProps = NativeStackScreenProps<AuthStackParamList, 'Login'>;
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <View style={styles.container}>
@@ -38,9 +41,35 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
           onChangeText={setPassword}
         />
 
-        <TouchableOpacity style={styles.primaryButton} onPress={() => {}}>
-          <Text style={styles.primaryButtonText}>Giriş Yap</Text>
+        <TouchableOpacity
+          style={styles.primaryButton}
+          onPress={async () => {
+            setError(null);
+            setLoading(true);
+            try {
+              const res = await fetch(`${API_BASE}/api/login`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+              });
+              const data = await res.json();
+              if (!res.ok) {
+                setError(data.error || 'Giriş başarısız');
+              } else {
+                // gerçek uygulamada token saklanır
+                navigation.navigate('Home');
+              }
+            } catch (e) {
+              setError('Sunucu ile bağlantı kurulamadı');
+            } finally {
+              setLoading(false);
+            }
+          }}
+        >
+          {loading ? <ActivityIndicator color="#022c22" /> : <Text style={styles.primaryButtonText}>Giriş Yap</Text>}
         </TouchableOpacity>
+
+        {error ? <Text style={styles.errorText}>{error}</Text> : null}
 
         <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={styles.linkText}>Hesabın yok mu? Kayıt ol</Text>
@@ -107,5 +136,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#38bdf8',
     fontSize: 14,
+  },
+  errorText: {
+    marginTop: 12,
+    color: '#f87171',
+    textAlign: 'center',
   },
 });
