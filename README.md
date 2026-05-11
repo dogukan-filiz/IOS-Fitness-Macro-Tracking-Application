@@ -48,8 +48,7 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 | 1 | Proje planlama ve dokümantasyon | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s) |
 | 2 | React Native kurulumu ve proje yapısı | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1) |
 | 3 | Login/Register ekranları | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s) |
-| 4 | Backend API geliştirme | Beklemede | - |
-| 4 | Backend API geliştirildi ve authentication | Tamamlandı | - |
+| 4 | Backend API geliştirme | Beklemede | [Youtube](https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4) |
 | 5 | Besin ekleme sistemi | Beklemede | - |
 | 6 | Makro hesaplama sistemi | Beklemede | - |
 | 7 | Kilo takip ve grafikler | Beklemede | - |
