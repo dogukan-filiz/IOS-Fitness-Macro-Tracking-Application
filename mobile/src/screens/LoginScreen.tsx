@@ -70,7 +70,7 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                   console.warn('Token kaydedilemedi', e);
                   setDebugLogin(prev => (prev ? prev + '\nSaveError' : 'SaveError'));
                 }
-                navigation.navigate('Home');
+                navigation.replace('Root');
               }
             } catch (e) {
               setError('Sunucu ile bağlantı kurulamadı');

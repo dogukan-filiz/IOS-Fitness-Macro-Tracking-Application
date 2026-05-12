@@ -35,7 +35,7 @@ Bu proje **React Native** kullanılarak mobil platformlar için geliştirilecekt
 - **Express.js** - Web application framework
 
 ### Veritabanı
-- **PostgreSQL** - İlişkisel veritabanı yönetim sistemi
+- **SQLite** - Dosya tabanlı ilişkisel veritabanı (proje kapsamında tercih edildi)
 
 ### Versiyon Kontrol
 - **Git** - Versiyon kontrol sistemi
@@ -160,6 +160,9 @@ https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0
 **Video İçeriği:**
 API bağlantısı ve kullanıcı işlemleri gösterilecektir.
 
+**Yayınlanan Video:**  
+https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4
+
 ---
 
 ### 5. Hafta
@@ -171,6 +174,9 @@ API bağlantısı ve kullanıcı işlemleri gösterilecektir.
 
 **Video İçeriği:**
 Besin ekleme işlemi anlatılacaktır.
+
+**Yayınlanan Video:**  
+https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=5
 
 ---
 
@@ -255,9 +261,10 @@ main
 **Durum:** Tamamlandı (26 Nisan 2026)
 
 **Özet:**
-- Basit Express + SQLite backend eklendi (`/backend`)
+- Express + SQLite backend eklendi (`/backend`)
 - `POST /api/register`, `POST /api/login` ve korumalı `GET /api/me` endpoint'leri eklendi
-- Mobilde token saklama ve profil çekme eklendi (AsyncStorage kullanıldı)
+- Mobil uygulama backend'e bağlandı, giriş sonrası token saklandı ve profil bilgisi çekildi
+- Token saklama için cihazda güvenli depolama kullanıldı (mobilde SecureStore, web'de localStorage fallback)
 ```
 
 ---
@@ -325,4 +332,4 @@ https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H
 
 ---
 
-**Son Güncelleme:** 16 Mart 2026
+**Son Güncelleme:** 12 Mayıs 2026

@@ -32,7 +32,7 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 ### Backend
 - Node.js
 - Express.js
-- PostgreSQL
+- SQLite
 
 ### Araçlar
 - Git & GitHub
@@ -48,8 +48,8 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 | 1 | Proje planlama ve dokümantasyon | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s) |
 | 2 | React Native kurulumu ve proje yapısı | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1) |
 | 3 | Login/Register ekranları | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s) |
-| 4 | Backend API geliştirme | Beklemede | [Youtube](https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4) |
-| 5 | Besin ekleme sistemi | Beklemede | - |
+| 4 | Backend API geliştirildi ve authentication | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4) |
+| 5 | Besin ekleme sistemi + günlük özet + besin arama | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=5) |
 | 6 | Makro hesaplama sistemi | Beklemede | - |
 | 7 | Kilo takip ve grafikler | Beklemede | - |
 | 8 | Kalori öneri sistemi | Beklemede | - |
@@ -82,6 +82,21 @@ YouTube Playlist: [Buradan](https://www.youtube.com/playlist?list=PL9BuUlHQ6EDzB
 - Ekranlar arası geçiş akışının gösterimi
 
 **Video:** [https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s)
+
+### Hafta 4 - Backend API ve Authentication
+- Backend tarafında kullanıcı kayıt ve giriş akışının kurulması
+- Mobil uygulama ile backend bağlantısının yapılması
+- Oturum yönetimi ve temel güvenlik akışı
+
+**Video:** https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4
+
+### Hafta 5 - Besin Ekleme Sistemi ve Günlük Özet
+- Besin veritabanı ve besin ekleme akışı
+- Günlük toplam kalori/makro özetinin Ana Sayfa'da gösterimi
+- Dış kaynaktan besin arama (API) desteği
+- Tab bar (alt menü) ile ekran geçişleri
+
+**Video:** https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=5
 
 ---
 
@@ -117,7 +132,7 @@ fitness-app/
 - Node.js (v18 veya üzeri)
 - npm veya yarn
 - Expo CLI
-- PostgreSQL
+- SQLite (backend içinde dosya olarak)
 
 ### Adımlar
 
@@ -138,7 +153,7 @@ npx expo start
 ```bash
 cd backend
 npm install
-npm run dev
+npm start
 ```
 
 ---
@@ -189,4 +204,4 @@ BLM4538 - IOS İle Mobil Uygulama Geliştirme II
 
 ---
 
-**Son Güncelleme:** 26 Nisan 2026
+**Son Güncelleme:** 12 Mayıs 2026

@@ -1,0 +1,101 @@
+[
+  {"name":"Tavuk Göğsü (Pişmiş)","calories_per_100g":165,"protein_per_100g":31,"carbs_per_100g":0,"fat_per_100g":3.6},
+  {"name":"Pirinç (Pişmiş)","calories_per_100g":130,"protein_per_100g":2.4,"carbs_per_100g":28.2,"fat_per_100g":0.3},
+  {"name":"Yulaf Ezmesi","calories_per_100g":389,"protein_per_100g":16.9,"carbs_per_100g":66.3,"fat_per_100g":6.9},
+  {"name":"Yumurta","calories_per_100g":155,"protein_per_100g":13,"carbs_per_100g":1.1,"fat_per_100g":11},
+  {"name":"Süt (Yağlı)","calories_per_100g":61,"protein_per_100g":3.2,"carbs_per_100g":4.8,"fat_per_100g":3.3},
+  {"name":"Muz","calories_per_100g":89,"protein_per_100g":1.1,"carbs_per_100g":22.8,"fat_per_100g":0.3},
+  {"name":"Zeytinyağı","calories_per_100g":884,"protein_per_100g":0,"carbs_per_100g":0,"fat_per_100g":100},
+  {"name":"Ton Balığı (Konserve)","calories_per_100g":116,"protein_per_100g":26,"carbs_per_100g":0,"fat_per_100g":1},
+  {"name":"Yoğurt (Sade)","calories_per_100g":61,"protein_per_100g":3.5,"carbs_per_100g":4.7,"fat_per_100g":3.3},
+  {"name":"Badem","calories_per_100g":579,"protein_per_100g":21.2,"carbs_per_100g":21.6,"fat_per_100g":49.9},
+
+  {"name":"Hindi Göğsü (Pişmiş)","calories_per_100g":135,"protein_per_100g":29,"carbs_per_100g":0,"fat_per_100g":1.6},
+  {"name":"Kırmızı Et (Yağsız, Pişmiş)","calories_per_100g":217,"protein_per_100g":26,"carbs_per_100g":0,"fat_per_100g":12},
+  {"name":"Somon (Pişmiş)","calories_per_100g":208,"protein_per_100g":20,"carbs_per_100g":0,"fat_per_100g":13},
+  {"name":"Mercimek (Haşlanmış)","calories_per_100g":116,"protein_per_100g":9,"carbs_per_100g":20,"fat_per_100g":0.4},
+  {"name":"Nohut (Haşlanmış)","calories_per_100g":164,"protein_per_100g":8.9,"carbs_per_100g":27.4,"fat_per_100g":2.6},
+
+  {"name":"Ekmek (Tam Buğday)","calories_per_100g":247,"protein_per_100g":13,"carbs_per_100g":41,"fat_per_100g":4.2},
+  {"name":"Makarna (Pişmiş)","calories_per_100g":131,"protein_per_100g":5,"carbs_per_100g":25,"fat_per_100g":1.1},
+  {"name":"Bulgur (Pişmiş)","calories_per_100g":83,"protein_per_100g":3.1,"carbs_per_100g":18.6,"fat_per_100g":0.2},
+  {"name":"Patates (Haşlanmış)","calories_per_100g":87,"protein_per_100g":1.9,"carbs_per_100g":20.1,"fat_per_100g":0.1},
+
+  {"name":"Domates","calories_per_100g":18,"protein_per_100g":0.9,"carbs_per_100g":3.9,"fat_per_100g":0.2},
+  {"name":"Salatalık","calories_per_100g":15,"protein_per_100g":0.7,"carbs_per_100g":3.6,"fat_per_100g":0.1},
+  {"name":"Ispanak","calories_per_100g":23,"protein_per_100g":2.9,"carbs_per_100g":3.6,"fat_per_100g":0.4},
+  {"name":"Brokoli (Haşlanmış)","calories_per_100g":35,"protein_per_100g":2.4,"carbs_per_100g":7.2,"fat_per_100g":0.4},
+
+  {"name":"Ceviz","calories_per_100g":654,"protein_per_100g":15.2,"carbs_per_100g":13.7,"fat_per_100g":65.2},
+  {"name":"Tereyağı","calories_per_100g":717,"protein_per_100g":0.9,"carbs_per_100g":0.1,"fat_per_100g":81}
+
+  ,
+  {"name":"Yoğurt (Light)","calories_per_100g":41,"protein_per_100g":4.3,"carbs_per_100g":3.6,"fat_per_100g":0.8},
+  {"name":"Süt (Yarım Yağlı)","calories_per_100g":47,"protein_per_100g":3.4,"carbs_per_100g":4.9,"fat_per_100g":1.6},
+  {"name":"Süt (Yağsız)","calories_per_100g":34,"protein_per_100g":3.4,"carbs_per_100g":5,"fat_per_100g":0.1},
+  {"name":"Ayran (Az Yağlı)","calories_per_100g":28,"protein_per_100g":1.9,"carbs_per_100g":2.1,"fat_per_100g":1.2},
+
+  {"name":"Kepekli Ekmek","calories_per_100g":240,"protein_per_100g":10,"carbs_per_100g":45,"fat_per_100g":3},
+  {"name":"Simit","calories_per_100g":370,"protein_per_100g":11,"carbs_per_100g":70,"fat_per_100g":10},
+  {"name":"Pide (Sade)","calories_per_100g":270,"protein_per_100g":9,"carbs_per_100g":52,"fat_per_100g":3},
+  {"name":"Lavaş","calories_per_100g":290,"protein_per_100g":9,"carbs_per_100g":58,"fat_per_100g":4},
+
+  {"name":"Pilav (Yağlı, Pişmiş)","calories_per_100g":170,"protein_per_100g":2.6,"carbs_per_100g":30,"fat_per_100g":4},
+  {"name":"Kuskus (Pişmiş)","calories_per_100g":112,"protein_per_100g":3.8,"carbs_per_100g":23.2,"fat_per_100g":0.2},
+  {"name":"Erişte (Pişmiş)","calories_per_100g":150,"protein_per_100g":5.5,"carbs_per_100g":28,"fat_per_100g":2.2},
+  {"name":"Şehriye (Pişmiş)","calories_per_100g":120,"protein_per_100g":4,"carbs_per_100g":24,"fat_per_100g":1},
+
+  {"name":"Kuru Fasulye (Pişmiş)","calories_per_100g":140,"protein_per_100g":9,"carbs_per_100g":25,"fat_per_100g":0.5},
+  {"name":"Barbunya (Pişmiş)","calories_per_100g":127,"protein_per_100g":8.7,"carbs_per_100g":22.8,"fat_per_100g":0.5},
+  {"name":"Bezelye (Pişmiş)","calories_per_100g":84,"protein_per_100g":5.4,"carbs_per_100g":15.6,"fat_per_100g":0.4},
+  {"name":"Börülce (Pişmiş)","calories_per_100g":116,"protein_per_100g":7.7,"carbs_per_100g":20.8,"fat_per_100g":0.5},
+
+  {"name":"Köfte (Izgara)","calories_per_100g":260,"protein_per_100g":18,"carbs_per_100g":2,"fat_per_100g":21},
+  {"name":"Tavuk But (Pişmiş)","calories_per_100g":215,"protein_per_100g":18,"carbs_per_100g":0,"fat_per_100g":15},
+  {"name":"Kuzu Eti (Pişmiş)","calories_per_100g":294,"protein_per_100g":25,"carbs_per_100g":0,"fat_per_100g":21},
+  {"name":"Levrek (Pişmiş)","calories_per_100g":124,"protein_per_100g":24,"carbs_per_100g":0,"fat_per_100g":2.6},
+  {"name":"Hamsi (Pişmiş)","calories_per_100g":210,"protein_per_100g":29,"carbs_per_100g":0,"fat_per_100g":10},
+
+  {"name":"Sosis","calories_per_100g":301,"protein_per_100g":12,"carbs_per_100g":2,"fat_per_100g":27},
+  {"name":"Sucuk","calories_per_100g":450,"protein_per_100g":20,"carbs_per_100g":2,"fat_per_100g":40},
+  {"name":"Salam","calories_per_100g":338,"protein_per_100g":22,"carbs_per_100g":2,"fat_per_100g":27},
+
+  {"name":"Peynir (Lor, Light)","calories_per_100g":70,"protein_per_100g":12,"carbs_per_100g":2,"fat_per_100g":1},
+  {"name":"Mozzarella","calories_per_100g":280,"protein_per_100g":28,"carbs_per_100g":3,"fat_per_100g":17},
+  {"name":"Labne","calories_per_100g":230,"protein_per_100g":6,"carbs_per_100g":4,"fat_per_100g":21},
+
+  {"name":"Zeytin (Siyah)","calories_per_100g":115,"protein_per_100g":0.8,"carbs_per_100g":6,"fat_per_100g":10.7},
+  {"name":"Zeytin (Yeşil)","calories_per_100g":145,"protein_per_100g":1,"carbs_per_100g":3.8,"fat_per_100g":15.3},
+
+  {"name":"Pirinç (Kuru)","calories_per_100g":365,"protein_per_100g":7.1,"carbs_per_100g":80,"fat_per_100g":0.7},
+  {"name":"Bulgur (Kuru)","calories_per_100g":342,"protein_per_100g":12.3,"carbs_per_100g":75.9,"fat_per_100g":1.3},
+  {"name":"Makarna (Kuru)","calories_per_100g":371,"protein_per_100g":13,"carbs_per_100g":75,"fat_per_100g":1.5},
+
+  {"name":"Nohut (Kuru)","calories_per_100g":364,"protein_per_100g":19.3,"carbs_per_100g":60.7,"fat_per_100g":6},
+  {"name":"Mercimek (Kuru)","calories_per_100g":352,"protein_per_100g":24.6,"carbs_per_100g":63.4,"fat_per_100g":1.1},
+
+  {"name":"Muz (Orta 1 adet)","calories_per_100g":89,"protein_per_100g":1.1,"carbs_per_100g":22.8,"fat_per_100g":0.3},
+  {"name":"Elma (Orta 1 adet)","calories_per_100g":52,"protein_per_100g":0.3,"carbs_per_100g":14,"fat_per_100g":0.2},
+  {"name":"Armut","calories_per_100g":57,"protein_per_100g":0.4,"carbs_per_100g":15.2,"fat_per_100g":0.1},
+  {"name":"Üzüm","calories_per_100g":69,"protein_per_100g":0.7,"carbs_per_100g":18.1,"fat_per_100g":0.2},
+  {"name":"Karpuz","calories_per_100g":30,"protein_per_100g":0.6,"carbs_per_100g":7.6,"fat_per_100g":0.2},
+  {"name":"Kavun","calories_per_100g":34,"protein_per_100g":0.8,"carbs_per_100g":8.2,"fat_per_100g":0.2},
+  {"name":"Şeftali","calories_per_100g":39,"protein_per_100g":0.9,"carbs_per_100g":9.5,"fat_per_100g":0.3},
+  {"name":"Kayısı","calories_per_100g":48,"protein_per_100g":1.4,"carbs_per_100g":11.1,"fat_per_100g":0.4},
+  {"name":"Kiraz","calories_per_100g":63,"protein_per_100g":1.1,"carbs_per_100g":16,"fat_per_100g":0.2},
+
+  {"name":"Kabak","calories_per_100g":17,"protein_per_100g":1.2,"carbs_per_100g":3.1,"fat_per_100g":0.3},
+  {"name":"Patlıcan","calories_per_100g":25,"protein_per_100g":1,"carbs_per_100g":6,"fat_per_100g":0.2},
+  {"name":"Biber (Kırmızı)","calories_per_100g":31,"protein_per_100g":1,"carbs_per_100g":6,"fat_per_100g":0.3},
+  {"name":"Biber (Yeşil)","calories_per_100g":20,"protein_per_100g":0.9,"carbs_per_100g":4.6,"fat_per_100g":0.2},
+  {"name":"Soğan","calories_per_100g":40,"protein_per_100g":1.1,"carbs_per_100g":9.3,"fat_per_100g":0.1},
+  {"name":"Sarımsak","calories_per_100g":149,"protein_per_100g":6.4,"carbs_per_100g":33.1,"fat_per_100g":0.5},
+
+  {"name":"Pirinç Patlağı","calories_per_100g":387,"protein_per_100g":7,"carbs_per_100g":81,"fat_per_100g":3},
+  {"name":"Kraker","calories_per_100g":502,"protein_per_100g":10,"carbs_per_100g":61,"fat_per_100g":24},
+  {"name":"Cips","calories_per_100g":536,"protein_per_100g":7,"carbs_per_100g":53,"fat_per_100g":34},
+  {"name":"Dondurma (Vanilya)","calories_per_100g":207,"protein_per_100g":3.5,"carbs_per_100g":24,"fat_per_100g":11},
+  {"name":"Kola","calories_per_100g":42,"protein_per_100g":0,"carbs_per_100g":10.6,"fat_per_100g":0},
+  {"name":"Meyve Suyu (Portakal)","calories_per_100g":45,"protein_per_100g":0.7,"carbs_per_100g":10.4,"fat_per_100g":0.2},
+  {"name":"Enerji İçeceği","calories_per_100g":45,"protein_per_100g":0,"carbs_per_100g":11,"fat_per_100g":0}
+]
