@@ -1,2 +1,7 @@
 node_modules
 .DS_Store
+
+# Local SQLite databases (generated during development)
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
