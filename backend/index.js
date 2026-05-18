@@ -19,6 +19,25 @@ app.use((req, _res, next) => {
 const db = new sqlite3.Database('./fitness.db');
 const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
 
+// --- Week 7: Weights ---
+// Lightweight migration at startup.
+db.serialize(() => {
+  db.run(
+    `
+    CREATE TABLE IF NOT EXISTS weights (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      weight REAL NOT NULL,
+      entry_date TEXT NOT NULL,
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT,
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )
+  `
+  );
+  db.run(`CREATE UNIQUE INDEX IF NOT EXISTS idx_weights_user_date ON weights(user_id, entry_date)`);
+});
+
 app.post('/api/register', async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) return res.status(400).json({ error: 'Eksik alan' });
@@ -49,6 +68,58 @@ app.post('/api/login', (req, res) => {
     const token = jwt.sign(user, JWT_SECRET, { expiresIn: '7d' });
     return res.json({ user, token });
   });
+});
+
+// Create/update a weight entry for a given date (upsert by user_id + entry_date)
+app.post('/api/weights', authenticate, (req, res) => {
+  const userId = req.user && req.user.id;
+  if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+  const weight = Number(req.body?.weight);
+  const date = (req.body?.date || '').toString().trim();
+  const safeDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : new Date().toISOString().slice(0, 10);
+
+  if (!Number.isFinite(weight)) return res.status(400).json({ error: 'weight sayısal olmalı' });
+  if (weight < 20 || weight > 300) return res.status(400).json({ error: 'weight 20-300 aralığında olmalı' });
+
+  const sql = `
+    INSERT INTO weights (user_id, weight, entry_date, updated_at)
+    VALUES (?, ?, ?, datetime('now'))
+    ON CONFLICT(user_id, entry_date)
+    DO UPDATE SET
+      weight = excluded.weight,
+      updated_at = datetime('now')
+  `;
+
+  db.run(sql, [userId, weight, safeDate], function (err) {
+    if (err) return res.status(500).json({ error: 'DB hatası' });
+    return res.status(201).json({ entry: { user_id: userId, weight, date: safeDate } });
+  });
+});
+
+// List all weights for the authenticated user
+app.get('/api/weights', authenticate, (req, res) => {
+  const userId = req.user && req.user.id;
+  if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+  db.all(
+    `SELECT id, weight, entry_date AS date, created_at, updated_at
+     FROM weights
+     WHERE user_id = ?
+     ORDER BY entry_date ASC, id ASC`,
+    [userId],
+    (err, rows) => {
+      if (err) return res.status(500).json({ error: 'DB hatası' });
+      const entries = (rows || []).map((r) => ({
+        id: r.id,
+        weight: Number(r.weight || 0),
+        date: r.date,
+        created_at: r.created_at,
+        updated_at: r.updated_at,
+      }));
+      return res.json({ entries });
+    }
+  );
 });
 
 // Auth middleware
