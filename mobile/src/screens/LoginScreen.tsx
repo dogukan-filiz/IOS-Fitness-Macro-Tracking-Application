@@ -5,6 +5,17 @@ import { setToken } from '../utils/storage';
 import type { AuthStackParamList } from '../navigation/AuthNavigator';
 import { API_BASE } from '../config/api';
 
+async function fetchWithTimeout(input: RequestInfo, init: RequestInit & { timeoutMs?: number } = {}) {
+  const { timeoutMs = 12000, ...rest } = init;
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(input, { ...rest, signal: controller.signal });
+  } finally {
+    clearTimeout(id);
+  }
+}
+
 export type LoginScreenProps = NativeStackScreenProps<AuthStackParamList, 'Login'>;
 
 export default function LoginScreen({ navigation }: LoginScreenProps) {
@@ -49,10 +60,11 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
             setError(null);
             setLoading(true);
             try {
-              const res = await fetch(`${API_BASE}/api/login`, {
+              const res = await fetchWithTimeout(`${API_BASE}/api/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
+                timeoutMs: 12000,
               });
               const data = await res.json();
               if (!res.ok) {
@@ -73,7 +85,11 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
                 navigation.replace('Root');
               }
             } catch (e) {
-              setError('Sunucu ile bağlantı kurulamadı');
+              if ((e as any)?.name === 'AbortError') {
+                setError('İstek zaman aşımına uğradı. Telefon ve bilgisayar aynı Wi‑Fi’da mı? API adresi doğru mu?');
+              } else {
+                setError('Sunucu ile bağlantı kurulamadı. Telefon ve bilgisayar aynı ağda olmalı.');
+              }
             } finally {
               setLoading(false);
             }
