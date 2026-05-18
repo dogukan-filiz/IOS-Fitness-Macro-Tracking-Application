@@ -9,6 +9,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Basic request logger (helps debug Expo Go / LAN connectivity)
+app.use((req, _res, next) => {
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path} from ${ip}`);
+  next();
+});
+
 const db = new sqlite3.Database('./fitness.db');
 const JWT_SECRET = process.env.JWT_SECRET || 'dev_secret_change_me';
 
@@ -266,6 +273,51 @@ app.get('/api/daily-summary', authenticate, (req, res) => {
       items: Number(row?.items || 0),
     };
     return res.json({ summary });
+  });
+});
+
+// Week 6: List daily food entries for selected date
+// Returns per-entry computed macros based on grams.
+app.get('/api/food-entries/daily', authenticate, (req, res) => {
+  const userId = req.user && req.user.id;
+  if (!userId) return res.status(401).json({ error: 'Unauthorized' });
+
+  const date = (req.query.date || '').toString().trim();
+  const safeDate = date && /^\d{4}-\d{2}-\d{2}$/.test(date) ? date : new Date().toISOString().slice(0, 10);
+
+  const sql = `
+    SELECT
+      e.id,
+      e.entry_date,
+      e.grams,
+      f.id AS food_id,
+      f.name AS food_name,
+      (f.calories_per_100g * e.grams / 100.0) AS calories,
+      (f.protein_per_100g  * e.grams / 100.0) AS protein,
+      (f.carbs_per_100g    * e.grams / 100.0) AS carbs,
+      (f.fat_per_100g      * e.grams / 100.0) AS fat
+    FROM food_entries e
+    JOIN foods f ON f.id = e.food_id
+    WHERE e.user_id = ? AND e.entry_date = ?
+    ORDER BY e.created_at DESC, e.id DESC
+  `;
+
+  db.all(sql, [userId, safeDate], (err, rows) => {
+    if (err) return res.status(500).json({ error: 'DB hatası' });
+    const entries = (rows || []).map((r) => ({
+      id: r.id,
+      date: r.entry_date,
+      grams: Number(r.grams || 0),
+      food: {
+        id: r.food_id,
+        name: r.food_name,
+      },
+      calories: Number(r.calories || 0),
+      protein: Number(r.protein || 0),
+      carbs: Number(r.carbs || 0),
+      fat: Number(r.fat || 0),
+    }));
+    return res.json({ date: safeDate, entries });
   });
 });
 
