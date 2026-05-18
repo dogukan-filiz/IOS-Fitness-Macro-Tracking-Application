@@ -4,6 +4,10 @@ import * as SecureStore from 'expo-secure-store';
 export type LocalProfile = {
   heightCm?: number;
   weightKg?: number;
+  ageYears?: number;
+  gender?: 'male' | 'female';
+  activityLevel?: 'sedentary' | 'light' | 'moderate' | 'very' | 'extra';
+  goal?: 'lose' | 'maintain' | 'gain';
   updatedAt?: string;
 };
 
