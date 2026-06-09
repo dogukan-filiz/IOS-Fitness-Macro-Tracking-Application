@@ -153,7 +153,7 @@ def cover(pdf):
         pdf.ln(3)
     pdf.ln(34)
     pdf.set_font("Arial", "B", 12)
-    pdf.cell(0, 9, "9 Haziran 2026", align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 9, "10 Haziran 2026", align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
 
 
 def main():
