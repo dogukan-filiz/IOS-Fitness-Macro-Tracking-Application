@@ -23,7 +23,6 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [debugLogin, setDebugLogin] = useState<string | null>(null);
 
   return (
     <View style={styles.container}>
@@ -70,17 +69,12 @@ export default function LoginScreen({ navigation }: LoginScreenProps) {
               if (!res.ok) {
                 setError(data.error || 'Giriş başarısız');
               } else {
-                // show debug info about token
-                setDebugLogin(JSON.stringify(data));
-                // token sakla using SecureStore
                 try {
                   await setToken(data.token);
-                  const read = await (await import('../utils/storage')).getToken();
-                  console.log('Stored token read back:', read);
-                  setDebugLogin(prev => (prev ? prev + '\nStored:' + read : 'Stored:' + read));
                 } catch (e) {
                   console.warn('Token kaydedilemedi', e);
-                  setDebugLogin(prev => (prev ? prev + '\nSaveError' : 'SaveError'));
+                  setError('Oturum bilgisi cihaza kaydedilemedi. Lütfen tekrar deneyin.');
+                  return;
                 }
                 navigation.replace('Root');
               }

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
-  Alert,
   FlatList,
   Pressable,
   StyleSheet,
@@ -12,6 +11,7 @@ import {
 import { API_BASE } from '../config/api';
 import { getToken } from '../utils/storage';
 import { useNavigation } from '@react-navigation/native';
+import InlineMessage from '../components/InlineMessage';
 
 type Food = {
   id: number;
@@ -47,6 +47,7 @@ export default function FoodAddScreen() {
   const [grams, setGrams] = useState('100');
   const [meal, setMeal] = useState<'Kahvaltı' | 'Öğle' | 'Akşam' | 'Atıştırma'>('Kahvaltı');
   const [mode, setMode] = useState<'db' | 'api'>('db');
+  const [message, setMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
 
   const gramsNum = useMemo(() => {
     const n = Number(grams);
@@ -70,7 +71,7 @@ export default function FoodAddScreen() {
     try {
       const token = await getToken();
       if (!token) {
-        Alert.alert('Oturum bulunamadı', 'Lütfen tekrar giriş yapın.');
+        setMessage({ type: 'error', text: 'Oturum bulunamadı. Lütfen tekrar giriş yapın.' });
         navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
         return;
       }
@@ -84,7 +85,7 @@ export default function FoodAddScreen() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        Alert.alert('Hata', data?.error || 'Besin listesi alınamadı.');
+        setMessage({ type: 'error', text: data?.error || 'Besin listesi alınamadı.' });
         return;
       }
       setFoods(data.foods || []);
@@ -92,7 +93,7 @@ export default function FoodAddScreen() {
   setSelectedApi(null);
     } catch (e) {
       console.warn('foods fetch error', e);
-      Alert.alert('Hata', 'Besin listesi alınamadı.');
+      setMessage({ type: 'error', text: 'Besin listesi alınamadı.' });
     } finally {
       setLoading(false);
     }
@@ -103,7 +104,7 @@ export default function FoodAddScreen() {
     try {
       const token = await getToken();
       if (!token) {
-        Alert.alert('Oturum bulunamadı', 'Lütfen tekrar giriş yapın.');
+        setMessage({ type: 'error', text: 'Oturum bulunamadı. Lütfen tekrar giriş yapın.' });
         navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
         return;
       }
@@ -116,7 +117,7 @@ export default function FoodAddScreen() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        Alert.alert('Hata', data?.error || 'API besin araması başarısız.');
+        setMessage({ type: 'error', text: data?.error || 'API besin araması başarısız.' });
         return;
       }
       setApiItems(data.items || []);
@@ -124,7 +125,7 @@ export default function FoodAddScreen() {
       setSelected(null);
     } catch (e) {
       console.warn('OFF search error', e);
-      Alert.alert('Hata', 'API besin araması başarısız.');
+      setMessage({ type: 'error', text: 'API besin araması başarısız.' });
     } finally {
       setLoading(false);
     }
@@ -136,14 +137,21 @@ export default function FoodAddScreen() {
   }, []);
 
   async function handleAdd() {
-  const item = mode === 'api' ? selectedApi : selected;
-  if (!item) return Alert.alert('Besin seç', 'Lütfen bir besin seçin.');
-    if (!gramsNum || Number.isNaN(gramsNum) || gramsNum <= 0) return Alert.alert('Gram', 'Gram değeri geçersiz.');
+    setMessage(null);
+    const item = mode === 'api' ? selectedApi : selected;
+    if (!item) {
+      setMessage({ type: 'error', text: 'Lütfen bir besin seçin.' });
+      return;
+    }
+    if (!gramsNum || Number.isNaN(gramsNum) || gramsNum <= 0) {
+      setMessage({ type: 'error', text: 'Gram değeri geçersiz.' });
+      return;
+    }
 
     try {
       const token = await getToken();
       if (!token) {
-        Alert.alert('Oturum bulunamadı', 'Lütfen tekrar giriş yapın.');
+        setMessage({ type: 'error', text: 'Oturum bulunamadı. Lütfen tekrar giriş yapın.' });
         navigation.reset({ index: 0, routes: [{ name: 'Login' }] });
         return;
       }
@@ -162,15 +170,15 @@ export default function FoodAddScreen() {
 
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        Alert.alert('Hata', data?.error || 'Besin eklenemedi.');
+        setMessage({ type: 'error', text: data?.error || 'Besin eklenemedi.' });
         return;
       }
 
-      Alert.alert('Eklendi', 'Besin günlük listeye eklendi.');
+      setMessage({ type: 'success', text: 'Besin günlük listeye eklendi.' });
       navigation.goBack();
     } catch (e) {
       console.warn('food entry add error', e);
-      Alert.alert('Hata', 'Besin eklenemedi.');
+      setMessage({ type: 'error', text: 'Besin eklenemedi.' });
     }
   }
 
@@ -285,6 +293,8 @@ export default function FoodAddScreen() {
         ) : (
           <Text style={styles.estimate}>Bir besin seçip gram gir.</Text>
         )}
+
+        {message ? <InlineMessage type={message.type} text={message.text} /> : null}
 
         <Pressable style={styles.addBtn} onPress={handleAdd}>
           <Text style={styles.addBtnText}>Besini Ekle</Text>

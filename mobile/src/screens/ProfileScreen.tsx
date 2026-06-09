@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { getLocalProfile, setLocalProfile } from '../utils/storage';
+import InlineMessage from '../components/InlineMessage';
 import {
   calculateCalorieRecommendation,
   type ActivityLevel,
@@ -205,13 +206,7 @@ export default function ProfileScreen() {
             })}
           </View>
 
-          {message && (
-            <View style={[styles.banner, message.type === 'error' ? styles.bannerError : styles.bannerSuccess]}>
-              <Text style={[styles.bannerText, message.type === 'error' ? styles.bannerTextError : styles.bannerTextSuccess]}>
-                {message.text}
-              </Text>
-            </View>
-          )}
+          {message && <InlineMessage type={message.type} text={message.text} />}
 
           <Pressable onPress={handleSave} style={[styles.primaryBtn, saving && { opacity: 0.7 }]} disabled={saving}>
             <Text style={styles.primaryBtnText}>{saving ? 'Hesaplanıyor…' : 'Hesapla ve Kaydet'}</Text>
@@ -362,31 +357,6 @@ const styles = StyleSheet.create({
     color: '#111827',
     fontSize: 16,
     fontWeight: '900',
-  },
-  banner: {
-    marginTop: 16,
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    borderWidth: 1,
-  },
-  bannerError: {
-    backgroundColor: '#fef2f2',
-    borderColor: '#fca5a5',
-  },
-  bannerSuccess: {
-    backgroundColor: '#dcfce7',
-    borderColor: '#86efac',
-  },
-  bannerText: {
-    fontSize: 13,
-    fontWeight: '800',
-  },
-  bannerTextError: {
-    color: '#b91c1c',
-  },
-  bannerTextSuccess: {
-    color: '#166534',
   },
   primaryBtn: {
     marginTop: 16,

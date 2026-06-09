@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
-  Alert,
   FlatList,
   Platform,
   Pressable,
@@ -19,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { API_BASE } from '../config/api';
 import { getToken } from '../utils/storage';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
+import InlineMessage from '../components/InlineMessage';
 
 type WeightEntry = {
   id: number;
@@ -64,6 +64,7 @@ export default function WeightScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const [entries, setEntries] = useState<WeightEntry[]>([]);
 
   const iso = useMemo(() => toIsoDate(selectedDate), [selectedDate]);
@@ -117,21 +118,22 @@ export default function WeightScreen() {
 
   async function saveWeight() {
     const w = parseWeight(weightInput);
+    setNotice(null);
+    setError(null);
     if (!weightInput.trim()) {
-      Alert.alert('Eksik bilgi', 'Lütfen kilo değerini gir.');
+      setError('Lütfen kilo değerini gir.');
       return;
     }
     if (!Number.isFinite(w)) {
-      Alert.alert('Geçersiz kilo', 'Kilo sayısal olmalı (örn. 78.5).');
+      setError('Kilo sayısal olmalı (örn. 78.5).');
       return;
     }
     if (w < 20 || w > 300) {
-      Alert.alert('Geçersiz kilo', 'Kilo 20–300 kg aralığında olmalı.');
+      setError('Kilo 20–300 kg aralığında olmalı.');
       return;
     }
 
     setSaving(true);
-    setError(null);
     try {
       const token = await getToken();
       if (!token) {
@@ -149,20 +151,16 @@ export default function WeightScreen() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        const msg = data?.error || 'Kilo kaydı eklenemedi.';
-        setError(msg);
-        Alert.alert('Hata', msg);
+        setError(data?.error || 'Kilo kaydı eklenemedi.');
         return;
       }
 
       setWeightInput('');
-      Alert.alert('Kaydedildi', `${formatDateTr(iso)} için kilo kaydı güncellendi.`);
+      setNotice(`${formatDateTr(iso)} için kilo kaydı güncellendi.`);
       await fetchWeights();
     } catch (e) {
       console.warn('weights save error', e);
-      const msg = 'Sunucuya bağlanılamadı. Lütfen tekrar deneyin.';
-      setError(msg);
-      Alert.alert('Hata', msg);
+      setError('Sunucuya bağlanılamadı. Lütfen tekrar deneyin.');
     } finally {
       setSaving(false);
     }
@@ -261,7 +259,8 @@ export default function WeightScreen() {
                 )}
               </Pressable>
 
-              {error ? <Text style={styles.errorText}>{error}</Text> : null}
+              {error ? <InlineMessage type="error" text={error} /> : null}
+              {notice ? <InlineMessage type="success" text={notice} /> : null}
             </View>
 
             <View style={styles.card}>
@@ -445,11 +444,6 @@ const styles = StyleSheet.create({
   primaryBtnText: {
     color: '#ffffff',
     fontWeight: '900',
-  },
-  errorText: {
-    marginTop: 10,
-    color: '#dc2626',
-    fontWeight: '700',
   },
   centerBox: {
     paddingVertical: 14,
