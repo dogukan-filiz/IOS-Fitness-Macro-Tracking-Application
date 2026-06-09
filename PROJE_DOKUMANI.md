@@ -226,7 +226,7 @@ Kalori hesaplama sistemi anlatılacaktır.
 **Video İçeriği:**
 Uygulamanın genel işleyişi gösterilecektir.
 
-**Durum:** Tamamlandı (9 Haziran 2026)
+**Durum:** Tamamlandı (2 Haziran 2026)
 
 **Özet:**
 - Tüm ekranlarda tutarlı geri bildirim için yeniden kullanılabilir `InlineMessage` bileşeni eklendi (web'de çalışmayan `Alert.alert` yerine).
