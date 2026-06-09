@@ -10,6 +10,7 @@ from fpdf.enums import XPos, YPos
 
 ARIAL = "/System/Library/Fonts/Supplemental/Arial.ttf"
 ARIAL_BOLD = "/System/Library/Fonts/Supplemental/Arial Bold.ttf"
+LOGO = "/Users/dogukanfiliz/fitness-app/scripts/assets/ankara_logo.jpeg"
 
 NAVY = (15, 23, 42)
 GRAY = (90, 96, 110)
@@ -135,7 +136,10 @@ def cover(pdf):
     pdf.set_text_color(*NAVY)
     for line in ["ANKARA ÜNİVERSİTESİ", "MÜHENDİSLİK FAKÜLTESİ", "BİLGİSAYAR MÜHENDİSLİĞİ BÖLÜMÜ"]:
         pdf.cell(0, 9, line, align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
-    pdf.ln(40)
+    pdf.ln(8)
+    logo_w = 48
+    pdf.image(LOGO, x=(pdf.w - logo_w) / 2, w=logo_w)
+    pdf.ln(14)
     pdf.set_font("Arial", "B", 14)
     pdf.multi_cell(0, 8, "BLM4538 (IOS İle Mobil Uygulama Geliştirme II)\nDersi Projesi Final Dokümanı",
                    align="C", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
