@@ -50,11 +50,11 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 | 3 | Login/Register ekranları | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s) |
 | 4 | Backend API geliştirildi ve authentication | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4) |
 | 5 | Besin ekleme sistemi + günlük özet + besin arama | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=5) |
-| 6 | Makro hesaplama sistemi | Tamamlandı | - |
-| 7 | Kilo takip ve grafikler | Tamamlandı | - |
-| 8 | Kalori öneri sistemi | Tamamlandı | - |
-| 9 | UI iyileştirmeleri ve bug düzeltmeleri | Tamamlandı | - |
-| 10 | Final, testler ve sunum | Tamamlandı | - |
+| 6 | Makro hesaplama sistemi | Tamamlandı | [YouTube](https://youtu.be/v56BeV5ZrFM?si=7JcvTGzCdWozPKTJ) |
+| 7 | Kilo takip ve grafikler | Tamamlandı | [YouTube](https://youtu.be/5Im0-geaQbo?si=_XaQ0Km8490pW5Xh) |
+| 8 | Kalori öneri sistemi | Tamamlandı | [YouTube](https://youtu.be/g9IsptYvB28?si=FbdsWD_pESM_ToWN) |
+| 9 | UI iyileştirmeleri ve bug düzeltmeleri | Tamamlandı | [YouTube](https://youtu.be/yYmroAlQhJM?si=vysvM5VRrlQ_nWuO) |
+| 10 | Final, testler ve sunum | Tamamlandı | [YouTube](https://youtu.be/W4WdeCMEZSw?si=3sKwDjw2EvTnhY0_) |
 
 ---
 

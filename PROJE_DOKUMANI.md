@@ -198,6 +198,9 @@ https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0
 **Video İçeriği:**
 Makro hesaplama sistemi anlatılacaktır.
 
+**Yayınlanan Video:**  
+https://youtu.be/v56BeV5ZrFM?si=7JcvTGzCdWozPKTJ
+
 **Durum:** Tamamlandı (12 Mayıs 2026)
 
 ---
@@ -211,6 +214,9 @@ Makro hesaplama sistemi anlatılacaktır.
 
 **Video İçeriği:**
 Kilo değişimi grafiği gösterilecektir.
+
+**Yayınlanan Video:**  
+https://youtu.be/5Im0-geaQbo?si=_XaQ0Km8490pW5Xh
 
 **Durum:** Tamamlandı (19 Mayıs 2026)
 
@@ -226,6 +232,9 @@ Kilo değişimi grafiği gösterilecektir.
 **Video İçeriği:**
 Kalori hesaplama sistemi anlatılacaktır.
 
+**Yayınlanan Video:**  
+https://youtu.be/g9IsptYvB28?si=FbdsWD_pESM_ToWN
+
 **Durum:** Tamamlandı (26 Mayıs 2026)
 
 ---
@@ -239,6 +248,9 @@ Kalori hesaplama sistemi anlatılacaktır.
 
 **Video İçeriği:**
 Uygulamanın genel işleyişi gösterilecektir.
+
+**Yayınlanan Video:**  
+https://youtu.be/yYmroAlQhJM?si=vysvM5VRrlQ_nWuO
 
 **Durum:** Tamamlandı (2 Haziran 2026)
 
@@ -258,6 +270,9 @@ Uygulamanın genel işleyişi gösterilecektir.
 
 **Video İçeriği:**
 Uygulamanın tüm özellikleri anlatılacaktır.
+
+**Yayınlanan Video:**  
+https://youtu.be/W4WdeCMEZSw?si=3sKwDjw2EvTnhY0_
 
 **Durum:** Tamamlandı (9 Haziran 2026)
 
