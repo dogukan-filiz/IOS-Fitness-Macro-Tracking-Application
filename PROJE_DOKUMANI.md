@@ -116,6 +116,8 @@ Proje fikri ve planı anlatılacaktır.
 **Yayınlanan Video:**  
 https://www.youtube.com/watch?v=CYnLUYTB3yo&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=2&t=3s
 
+**Durum:** Tamamlandı (7 Nisan 2026)
+
 ---
 
 ### 2. Hafta
@@ -130,6 +132,8 @@ Kurulum süreci ve proje başlangıcı anlatılacaktır.
 
 **Yayınlanan Video:**  
 https://www.youtube.com/watch?v=8SuirBNspEc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=1
+
+**Durum:** Tamamlandı (14 Nisan 2026)
 
 ---
 
@@ -146,7 +150,7 @@ Login ve Register ekranlarının çalışması gösterilecektir.
 **Yayınlanan Video:**  
 https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s
 
-**Durum:** Tamamlandı (26 Nisan 2026)
+**Durum:** Tamamlandı (21 Nisan 2026)
 
 ---
 
@@ -163,6 +167,8 @@ API bağlantısı ve kullanıcı işlemleri gösterilecektir.
 **Yayınlanan Video:**  
 https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4
 
+**Durum:** Tamamlandı (28 Nisan 2026)
+
 ---
 
 ### 5. Hafta
@@ -178,6 +184,8 @@ Besin ekleme işlemi anlatılacaktır.
 **Yayınlanan Video:**  
 https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=5
 
+**Durum:** Tamamlandı (5 Mayıs 2026)
+
 ---
 
 ### 6. Hafta
@@ -189,6 +197,8 @@ https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0
 
 **Video İçeriği:**
 Makro hesaplama sistemi anlatılacaktır.
+
+**Durum:** Tamamlandı (12 Mayıs 2026)
 
 ---
 
@@ -202,6 +212,8 @@ Makro hesaplama sistemi anlatılacaktır.
 **Video İçeriği:**
 Kilo değişimi grafiği gösterilecektir.
 
+**Durum:** Tamamlandı (19 Mayıs 2026)
+
 ---
 
 ### 8. Hafta
@@ -213,6 +225,8 @@ Kilo değişimi grafiği gösterilecektir.
 
 **Video İçeriği:**
 Kalori hesaplama sistemi anlatılacaktır.
+
+**Durum:** Tamamlandı (26 Mayıs 2026)
 
 ---
 
@@ -272,7 +286,7 @@ main
 ├── backend/       # Node.js/Express backend
 └── database/      # Veritabanı şemaları
 
-**Durum:** Tamamlandı (26 Nisan 2026)
+**Durum:** Tamamlandı (28 Nisan 2026)
 
 **Özet:**
 - Express + SQLite backend eklendi (`/backend`)
