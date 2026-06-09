@@ -50,11 +50,11 @@ Kullanıcıların günlük beslenme alışkanlıklarını takip edebilecekleri v
 | 3 | Login/Register ekranları | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=Lz-Z5SqH-Cc&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=3&t=59s) |
 | 4 | Backend API geliştirildi ve authentication | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=rIKMhql72fM&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=4) |
 | 5 | Besin ekleme sistemi + günlük özet + besin arama | Tamamlandı | [YouTube](https://www.youtube.com/watch?v=zSS9GPPCems&list=PL9BuUlHQ6EDzBpbM7VOoGhFvy2AYL0R9H&index=5) |
-| 6 | Makro hesaplama sistemi | Beklemede | - |
-| 7 | Kilo takip ve grafikler | Beklemede | - |
-| 8 | Kalori öneri sistemi | Beklemede | - |
-| 9 | UI iyileştirmeleri | Beklemede | - |
-| 10 | Final ve sunum | Beklemede | - |
+| 6 | Makro hesaplama sistemi | Tamamlandı | - |
+| 7 | Kilo takip ve grafikler | Tamamlandı | - |
+| 8 | Kalori öneri sistemi | Tamamlandı | - |
+| 9 | UI iyileştirmeleri ve bug düzeltmeleri | Tamamlandı | - |
+| 10 | Final, testler ve sunum | Tamamlandı | - |
 
 ---
 
@@ -149,11 +149,20 @@ npm install
 npx expo start
 ```
 
-3. **Backend için (ilerleyen haftalarda)**
+3. **Backend için**
 ```bash
 cd backend
 npm install
+npm run init-db   # veritabanını oluştur ve besinleri seed et
 npm start
+```
+
+4. **Backend smoke testi (opsiyonel)**
+
+Backend çalışırken ana API akışını uçtan uca doğrular:
+```bash
+cd backend
+npm run smoke
 ```
 
 ---

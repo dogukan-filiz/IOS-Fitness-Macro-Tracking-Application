@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
   "init-db": "node init_db.js",
-  "import-foods": "node import_foods.js"
+  "import-foods": "node import_foods.js",
+  "smoke": "node smoke_test.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

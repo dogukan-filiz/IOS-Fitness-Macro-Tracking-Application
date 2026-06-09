@@ -226,6 +226,13 @@ Kalori hesaplama sistemi anlatılacaktır.
 **Video İçeriği:**
 Uygulamanın genel işleyişi gösterilecektir.
 
+**Durum:** Tamamlandı (9 Haziran 2026)
+
+**Özet:**
+- Tüm ekranlarda tutarlı geri bildirim için yeniden kullanılabilir `InlineMessage` bileşeni eklendi (web'de çalışmayan `Alert.alert` yerine).
+- Profil, Kilo Takibi ve Besin Ekleme ekranlarındaki hata/başarı mesajları bu bileşene taşındı.
+- Giriş ekranında oturum token'ını konsola yazan geliştirme amaçlı kod temizlendi (güvenlik).
+
 ---
 
 ### 10. Hafta
@@ -237,6 +244,13 @@ Uygulamanın genel işleyişi gösterilecektir.
 
 **Video İçeriği:**
 Uygulamanın tüm özellikleri anlatılacaktır.
+
+**Durum:** Tamamlandı (9 Haziran 2026)
+
+**Özet:**
+- Dış besin servisi (OpenFoodFacts) proxy'si sağlamlaştırıldı: User-Agent eklendi, HTML/hata yanıtlarına karşı koruma, zaman aşımı ve geçici hatalarda otomatik yeniden deneme.
+- Backend için uçtan uca smoke test eklendi (`backend/smoke_test.js`, `npm run smoke`); ana API akışını otomatik doğruluyor.
+- Dokümantasyon güncellendi ve proje sunuma hazır hale getirildi.
 
 ---
 
