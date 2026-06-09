@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { getLocalProfile, setLocalProfile } from '../utils/storage';
 import {
   calculateCalorieRecommendation,
@@ -36,6 +36,7 @@ export default function ProfileScreen() {
   const [goal, setGoal] = useState<Goal | null>(null);
   const [saving, setSaving] = useState(false);
   const [result, setResult] = useState<CalorieResult | null>(null);
+  const [message, setMessage] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -64,32 +65,33 @@ export default function ProfileScreen() {
     const w = Number(weightKg);
     const a = Number(ageYears);
     if (!Number.isFinite(h) || h < 100 || h > 250) {
-      Alert.alert('Geçersiz boy', 'Boy 100–250 cm aralığında olmalı (örn. 175).');
+      setMessage({ type: 'error', text: 'Boy 100–250 cm aralığında olmalı (örn. 175).' });
       return;
     }
     if (!Number.isFinite(w) || w < 20 || w > 300) {
-      Alert.alert('Geçersiz kilo', 'Kilo değerini kg cinsinden gir (örn. 72).');
+      setMessage({ type: 'error', text: 'Kilo değerini kg cinsinden gir (örn. 72).' });
       return;
     }
     if (!Number.isFinite(a) || a < 10 || a > 100) {
-      Alert.alert('Geçersiz yaş', 'Yaş 10–100 aralığında olmalı.');
+      setMessage({ type: 'error', text: 'Yaş 10–100 aralığında olmalı.' });
       return;
     }
     if (!gender) {
-      Alert.alert('Eksik bilgi', 'Lütfen cinsiyet seç.');
+      setMessage({ type: 'error', text: 'Lütfen cinsiyet seç.' });
       return;
     }
     if (!activityLevel) {
-      Alert.alert('Eksik bilgi', 'Lütfen aktivite seviyesini seç.');
+      setMessage({ type: 'error', text: 'Lütfen aktivite seviyesini seç.' });
       return;
     }
     if (!goal) {
-      Alert.alert('Eksik bilgi', 'Lütfen hedefini seç.');
+      setMessage({ type: 'error', text: 'Lütfen hedefini seç.' });
       return;
     }
 
     try {
       setSaving(true);
+      setMessage(null);
       await setLocalProfile({ heightCm: h, weightKg: w, ageYears: a, gender, activityLevel, goal });
       const r = calculateCalorieRecommendation({
         heightCm: h,
@@ -100,7 +102,9 @@ export default function ProfileScreen() {
         goal,
       });
       setResult(r);
-      Alert.alert('Kaydedildi', 'Profil bilgilerin kaydedildi.');
+      setMessage({ type: 'success', text: 'Profil kaydedildi, kalori önerin aşağıda.' });
+    } catch (e) {
+      setMessage({ type: 'error', text: 'Kaydedilemedi. Lütfen tekrar dene.' });
     } finally {
       setSaving(false);
     }
@@ -200,6 +204,14 @@ export default function ProfileScreen() {
               );
             })}
           </View>
+
+          {message && (
+            <View style={[styles.banner, message.type === 'error' ? styles.bannerError : styles.bannerSuccess]}>
+              <Text style={[styles.bannerText, message.type === 'error' ? styles.bannerTextError : styles.bannerTextSuccess]}>
+                {message.text}
+              </Text>
+            </View>
+          )}
 
           <Pressable onPress={handleSave} style={[styles.primaryBtn, saving && { opacity: 0.7 }]} disabled={saving}>
             <Text style={styles.primaryBtnText}>{saving ? 'Hesaplanıyor…' : 'Hesapla ve Kaydet'}</Text>
@@ -350,6 +362,31 @@ const styles = StyleSheet.create({
     color: '#111827',
     fontSize: 16,
     fontWeight: '900',
+  },
+  banner: {
+    marginTop: 16,
+    borderRadius: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderWidth: 1,
+  },
+  bannerError: {
+    backgroundColor: '#fef2f2',
+    borderColor: '#fca5a5',
+  },
+  bannerSuccess: {
+    backgroundColor: '#dcfce7',
+    borderColor: '#86efac',
+  },
+  bannerText: {
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  bannerTextError: {
+    color: '#b91c1c',
+  },
+  bannerTextSuccess: {
+    color: '#166534',
   },
   primaryBtn: {
     marginTop: 16,
