@@ -245,22 +245,63 @@ app.post('/api/food-entries', authenticate, (req, res) => {
   });
 });
 
-function httpsJson(url) {
+function httpsJson(url, { timeoutMs = 8000 } = {}) {
   return new Promise((resolve, reject) => {
-    https
-      .get(url, (resp) => {
+    const req = https.get(
+      url,
+      {
+        // OpenFoodFacts blocks/rate-limits requests without a User-Agent and
+        // then serves an HTML error page, which breaks JSON.parse. A proper
+        // UA + Accept header keeps the API returning JSON.
+        headers: {
+          'User-Agent': 'FitnessMacroTracker/1.0 (educational project)',
+          Accept: 'application/json',
+        },
+      },
+      (resp) => {
+        const status = resp.statusCode || 0;
         let data = '';
         resp.on('data', (chunk) => (data += chunk));
         resp.on('end', () => {
+          if (status < 200 || status >= 300) {
+            return reject(new Error(`Upstream HTTP ${status}`));
+          }
+          const trimmed = data.trim();
+          // Guard against HTML error pages (rate-limit, maintenance, redirect).
+          if (!trimmed || trimmed[0] === '<') {
+            return reject(new Error('Upstream returned non-JSON response'));
+          }
           try {
-            resolve(JSON.parse(data));
+            resolve(JSON.parse(trimmed));
           } catch (e) {
             reject(e);
           }
         });
-      })
-      .on('error', reject);
+      }
+    );
+    req.on('error', reject);
+    req.setTimeout(timeoutMs, () => {
+      req.destroy(new Error('Upstream request timed out'));
+    });
   });
+}
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// OpenFoodFacts' legacy search endpoint is heavily rate-limited and returns
+// transient 503s. Retry a couple of times with backoff so a single user
+// search succeeds reliably.
+async function httpsJsonWithRetry(url, { retries = 2, timeoutMs = 8000 } = {}) {
+  let lastErr;
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      return await httpsJson(url, { timeoutMs });
+    } catch (e) {
+      lastErr = e;
+      if (attempt < retries) await sleep(400 * (attempt + 1));
+    }
+  }
+  throw lastErr;
 }
 
 // OpenFoodFacts proxy search
@@ -276,7 +317,7 @@ app.get('/api/foods/search', authenticate, async (req, res) => {
       `&search_simple=1&action=process&json=1&page_size=${pageSize}` +
       `&fields=code,product_name,nutriments`;
 
-    const json = await httpsJson(url);
+    const json = await httpsJsonWithRetry(url);
     const products = Array.isArray(json?.products) ? json.products : [];
 
     const items = products
@@ -307,7 +348,7 @@ app.get('/api/foods/search', authenticate, async (req, res) => {
     return res.json({ items });
   } catch (e) {
     console.warn('OpenFoodFacts search error', e);
-    return res.status(502).json({ error: 'Dış API hatası' });
+    return res.status(502).json({ error: 'Dış besin servisine şu an ulaşılamıyor. Lütfen tekrar deneyin.' });
   }
 });
 
